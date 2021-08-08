@@ -1,8 +1,6 @@
-package DataStructures;
+package dataStructures;
 
-import DataStructuresInterfaces.StackInterface;
-
-public class Stack<E> implements StackInterface<E> {
+public class Stack<E> {
     private int size;
     private int capacity;
     private int tailPtr;
@@ -26,7 +24,6 @@ public class Stack<E> implements StackInterface<E> {
      * Returns null if the stack is empty.
      * Returns the element at the top of stack if not empty
      */
-    @Override
     public E pop() {
         if (this.isEmpty())
             return null;
@@ -43,7 +40,6 @@ public class Stack<E> implements StackInterface<E> {
      *
      * @param data
      */
-    @Override
     public void push(E data) {
         if (this.getSize() < this.getCapacity()) {
             this.tailPtr++;
@@ -52,22 +48,18 @@ public class Stack<E> implements StackInterface<E> {
         }
     }
 
-    @Override
     public E peek() {
         return this.stackArr[this.tailPtr];
     }
 
-    @Override
     public boolean isEmpty() {
         return this.size == 0;
     }
 
-    @Override
     public int getSize() {
         return this.size;
     }
 
-    @Override
     public int getCapacity() {
         return this.capacity;
     }

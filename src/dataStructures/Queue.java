@@ -1,8 +1,6 @@
-package DataStructures;
+package dataStructures;
 
-import DataStructuresInterfaces.QueueInterface;
-
-public class Queue<E> implements QueueInterface<E> {
+public class Queue<E> {
     private int size;
     private int capacity;
 
@@ -31,7 +29,6 @@ public class Queue<E> implements QueueInterface<E> {
      * O(1) run-time
      * Adds an element to the back of the queue
      */
-    @Override
     public void enqueue(E data) {
         if (this.getSize() < this.getCapacity()) {
             if (frontPtr == -1) {
@@ -57,7 +54,6 @@ public class Queue<E> implements QueueInterface<E> {
      * O(1) run-time
      * Removes the first element in the queue
      */
-    @Override
     public E dequeue() {
         if (this.isEmpty())
             return null;
@@ -80,24 +76,20 @@ public class Queue<E> implements QueueInterface<E> {
     /**
      * Returns the first element in the queue if the queue isnt empty without removing it
      */
-    @Override
     public E peek() {
         if (!this.isEmpty())
             return this.buffer[frontPtr];
         return null;
     }
 
-    @Override
     public boolean isEmpty() {
         return this.size == 0;
     }
 
-    @Override
     public int getSize() {
         return this.size;
     }
 
-    @Override
     public int getCapacity() {
         return this.capacity;
     }
@@ -109,7 +101,6 @@ public class Queue<E> implements QueueInterface<E> {
         this.buffer = (E[]) new Object[capacity];
     }
 
-    @Override
     public String toString() {
         String result = "";
 
