@@ -1,16 +1,18 @@
-package DataStructures;
+package dataStructures;
 
 import Nodes.ListNode;
-import abstractClasses.LinkedList;
+import dataStructuresInterfaces.LinkedList;
 
 /**
  * @Author: Husam Saleem
  */
-public class DoublyLinkedList<E> extends LinkedList<E> {
-    ListNode<E> head, tail;
+public class DoublyLinkedList<E> implements LinkedList<E> {
+    private ListNode<E> head, tail;
+    private int size, capacity;
 
     public DoublyLinkedList(int capacity) {
-        super(capacity);
+        this.size = 0;
+        this.capacity = capacity;
         this.head = null;
         this.tail = null;
     }
@@ -116,6 +118,21 @@ public class DoublyLinkedList<E> extends LinkedList<E> {
         return true;
     }
 
+    @Override
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+
+    @Override
+    public int getSize() {
+        return this.size;
+    }
+
+    @Override
+    public int getCapacity() {
+        return this.capacity;
+    }
+
     /**
      * O(n)
      * Returns the specified node at a given position
@@ -202,6 +219,7 @@ public class DoublyLinkedList<E> extends LinkedList<E> {
         return result;
     }
 
+    @Override
     public void clear() {
         this.size = 0;
         this.tail = null;
@@ -210,5 +228,23 @@ public class DoublyLinkedList<E> extends LinkedList<E> {
 
     public ListNode<E> getHead() {
         return this.head;
+    }
+
+    @Override
+    public void reverse() {
+        ListNode<E> prev = null;
+        tail = head;
+
+        while (head != null) {
+            ListNode<E> nextNode = head.next;
+            head.next = prev;
+            head.prev = nextNode;
+
+            prev = head;
+            head = nextNode;
+        }
+
+
+        head = prev;
     }
 }

@@ -1,8 +1,8 @@
 package graphics;
 
-import Driver.Main;
 import Nodes.ListNode;
-import abstractClasses.LinkedList;
+import dataStructuresInterfaces.LinkedList;
+import driver.Main;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -80,10 +80,16 @@ public class LinkedListViewer<E> {
             drawLinkedList();
         });
 
+        Button reverse = new Button("Reverse");
+        reverse.setOnAction(e -> {
+            list.reverse();
+            drawLinkedList();
+        });
+
         pane1.getChildren().add(dataStructureName);
         pane1.setAlignment(Pos.CENTER);
 
-        pane2.getChildren().addAll(goBack, clear, setUpInsertionOptions(), setUpDeletionOptions(), setUpSwapOptions());
+        pane2.getChildren().addAll(goBack, clear, setUpInsertionOptions(), setUpDeletionOptions(), setUpSwapOptions(), reverse);
         pane2.setAlignment(Pos.TOP_CENTER);
         pane2.setSpacing(10);
 
