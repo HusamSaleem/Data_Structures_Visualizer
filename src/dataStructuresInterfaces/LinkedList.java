@@ -1,8 +1,8 @@
-package DataStructuresInterfaces;
+package dataStructuresInterfaces;
 
 import Nodes.ListNode;
 
-public interface LinkedListInterface<E> {
+public interface LinkedList<E> {
     public void insert(E val); // At end of the list
 
     public void insert(E val, int pos); // At a specified position
@@ -19,7 +19,11 @@ public interface LinkedListInterface<E> {
 
     public int getSize();
 
+    public void clear();
+
     public int getCapacity();
 
     public ListNode<E> getHead();
+
+    public void reverse();
 }
