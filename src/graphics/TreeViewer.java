@@ -25,6 +25,7 @@ public class TreeViewer<E extends Comparable<E>> {
     private String name;
     private boolean isHeap;
     private boolean isMinHeap;
+    private boolean isBinaryTree;
 
     public TreeViewer(String name, GraphicsController graphicsController) {
         this.name = name;
@@ -34,6 +35,7 @@ public class TreeViewer<E extends Comparable<E>> {
     public TreeViewer(String name, BinaryTree<E> tree, GraphicsController graphicsController) {
         this(name, graphicsController);
         this.tree = tree;
+        this.isBinaryTree = true;
     }
 
     public TreeViewer(String name, AVLTree<E> tree, GraphicsController graphicsController) {
@@ -105,10 +107,22 @@ public class TreeViewer<E extends Comparable<E>> {
             drawTree();
         });
 
+        Button invert = new Button("Invert");
+        invert.setOnAction(e -> {
+            if (!this.isHeap && this.isBinaryTree) {
+                tree.invertTree(tree.getRoot());
+                drawTree();
+            }
+        });
+
         pane1.getChildren().add(dataStructureName);
         pane1.setAlignment(Pos.CENTER);
 
-        pane2.getChildren().addAll(goBack, clear, setUpInsertionOptions(), setUpDeletionOptions());
+        if (this.isBinaryTree) {
+            pane2.getChildren().addAll(goBack, clear, setUpInsertionOptions(), setUpDeletionOptions(), invert);
+        } else {
+            pane2.getChildren().addAll(goBack, clear, setUpInsertionOptions(), setUpDeletionOptions());
+        }
         pane2.setAlignment(Pos.TOP_CENTER);
         pane2.setSpacing(10);
 

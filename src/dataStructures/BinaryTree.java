@@ -141,6 +141,20 @@ public class BinaryTree<E extends Comparable<E>> {
         }
     }
 
+    public TreeNode<E> invertTree(TreeNode<E> root) {
+        if (root == null) {
+            return null;
+        }
+
+        TreeNode<E> left = invertTree(root.left);
+        TreeNode<E> right = invertTree(root.right);
+
+        root.left = right;
+        root.right = left;
+
+        return root;
+    }
+
     public final int getDepth(TreeNode<E> node) {
         int depth = 0;
 
