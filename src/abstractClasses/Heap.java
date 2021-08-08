@@ -1,7 +1,7 @@
 package abstractClasses;
 
-import DataStructures.BinaryTree;
-import DataStructuresInterfaces.HeapInterface;
+import dataStructures.BinaryTree;
+import dataStructuresInterfaces.HeapInterface;
 
 /**
  * The Heap super class

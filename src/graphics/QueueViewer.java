@@ -1,7 +1,7 @@
 package graphics;
 
-import DataStructures.Queue;
-import Driver.Main;
+import dataStructures.Queue;
+import driver.Main;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

@@ -1,4 +1,4 @@
-package DataStructuresInterfaces;
+package dataStructuresInterfaces;
 
 public interface HeapInterface<E> {
     public void insert(E data);

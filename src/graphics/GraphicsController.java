@@ -1,6 +1,6 @@
 package graphics;
 
-import Driver.Main;
+import driver.Main;
 import javafx.geometry.Pos;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;

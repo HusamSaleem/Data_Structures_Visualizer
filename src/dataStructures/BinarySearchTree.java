@@ -1,7 +1,7 @@
-package DataStructures;
+package dataStructures;
 
-import DataStructuresInterfaces.BSTInterface;
 import Nodes.TreeNode;
+import dataStructuresInterfaces.BSTInterface;
 
 /**
  * @Author: Husam Saleem

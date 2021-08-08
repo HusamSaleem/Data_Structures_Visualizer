@@ -1,8 +1,8 @@
-package Driver;
+package driver;
 
-import DataStructures.*;
 import abstractClasses.Heap;
-import abstractClasses.LinkedList;
+import dataStructures.*;
+import dataStructuresInterfaces.LinkedList;
 import graphics.GraphicsController;
 import javafx.application.Application;
 import javafx.scene.Scene;

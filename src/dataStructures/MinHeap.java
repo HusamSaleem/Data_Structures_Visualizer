@@ -1,12 +1,12 @@
-package DataStructures;
+package dataStructures;
 
 import abstractClasses.Heap;
 
 /**
  * @Author: Husam Saleem
  */
-public class MaxHeap<E extends Comparable<E>> extends Heap<E> {
-    public MaxHeap(int capacity) {
+public class MinHeap<E extends Comparable<E>> extends Heap<E> {
+    public MinHeap(int capacity) {
         super(capacity);
     }
 
@@ -39,7 +39,7 @@ public class MaxHeap<E extends Comparable<E>> extends Heap<E> {
         while (!isParentNull(index)) {
             E parent = getParent(index);
 
-            if (parent.compareTo(lastElem) < 0) {
+            if (parent.compareTo(lastElem) > 0) {
                 swap(this.heapArr, index, getParentIndex(index));
                 index = getParentIndex(index);
             } else {
@@ -55,16 +55,16 @@ public class MaxHeap<E extends Comparable<E>> extends Heap<E> {
             E data = this.heapArr[index];
             boolean swapRight = false, swapLeft = false;
 
-            if (getLeftChild(index).compareTo(data) > 0) {
+            if (getLeftChild(index).compareTo(data) < 0) {
                 swapLeft = true;
             }
 
-            if (!isRightNull(index) && getRightChild(index).compareTo(data) > 0) {
+            if (!isRightNull(index) && getRightChild(index).compareTo(data) < 0) {
                 swapRight = true;
             }
 
             if (swapLeft && swapRight) {
-                if (getRightChild(index).compareTo(getLeftChild(index)) < 0) {
+                if (getRightChild(index).compareTo(getLeftChild(index)) > 0) {
                     swapRight = false;
                 } else {
                     swapLeft = false;

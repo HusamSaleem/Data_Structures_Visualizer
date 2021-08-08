@@ -1,10 +1,10 @@
 package graphics;
 
-import DataStructures.AVLTree;
-import DataStructures.BinarySearchTree;
-import DataStructures.BinaryTree;
-import Driver.Main;
 import Nodes.TreeNode;
+import dataStructures.AVLTree;
+import dataStructures.BinarySearchTree;
+import dataStructures.BinaryTree;
+import driver.Main;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

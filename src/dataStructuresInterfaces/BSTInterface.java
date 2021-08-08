@@ -1,4 +1,4 @@
-package DataStructuresInterfaces;
+package dataStructuresInterfaces;
 
 public interface BSTInterface<E> {
     public void insert(E data);
