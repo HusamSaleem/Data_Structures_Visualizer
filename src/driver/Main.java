@@ -43,8 +43,8 @@ public class Main extends Application {
      **/
     private final int MAXIMUM_LIST_SIZE = 12; // For stack/queues/linked lists
     private final int MAXIMUM_TREE_SIZE = 25; // For tree
-    private final int WINDOW_WIDTH = 1280;
-    private final int WINDOW_HEIGHT = 750;
+    private final int WINDOW_WIDTH = 1200;
+    private final int WINDOW_HEIGHT = 700;
 
     public static void main(String[] args) {
         launch(args);
@@ -76,6 +76,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(rootLayout, WINDOW_WIDTH, WINDOW_HEIGHT));
 
         rootLayout.setCenter(canvas);
+        primaryStage.setResizable(false);
 
         graphicsController = new GraphicsController();
         primaryStage.show();
