@@ -27,23 +27,20 @@ public class BinaryTree<E extends Comparable<E>> {
 
     private void insert(TreeNode<E> root, E data) {
         if (root == null) {
-            this.root = new TreeNode<E>(data);
+            this.root = new TreeNode<>(data);
             return;
         }
 
-        Queue<TreeNode<E>> queue = new Queue<TreeNode<E>>(this.capacity);
-
-        if (root != null)
-            queue.enqueue(root);
-
+        Queue<TreeNode<E>> queue = new Queue<>(this.capacity);
+        queue.enqueue(root);
         while (!queue.isEmpty()) {
             TreeNode<E> dequeued = queue.dequeue();
 
             if (dequeued.left == null) {
-                dequeued.left = new TreeNode<E>(data);
+                dequeued.left = new TreeNode<>(data);
                 break;
             } else if (dequeued.right == null) {
-                dequeued.right = new TreeNode<E>(data);
+                dequeued.right = new TreeNode<>(data);
                 break;
             } else {
                 queue.enqueue(dequeued.left);
@@ -60,7 +57,7 @@ public class BinaryTree<E extends Comparable<E>> {
     }
 
     private void delete(TreeNode<E> root, E data) {
-        Queue<TreeNode<E>> queue = new Queue<TreeNode<E>>(this.getCapacity());
+        Queue<TreeNode<E>> queue = new Queue<>(this.getCapacity());
         queue.enqueue(this.root);
 
         while (!queue.isEmpty()) {
@@ -78,7 +75,7 @@ public class BinaryTree<E extends Comparable<E>> {
     }
 
     private void deleteSuccessor(TreeNode<E> root, TreeNode<E> successor) {
-        Queue<TreeNode<E>> queue = new Queue<TreeNode<E>>(this.getCapacity());
+        Queue<TreeNode<E>> queue = new Queue<>(this.getCapacity());
         queue.enqueue(root);
 
         if (root == successor) {
@@ -103,7 +100,7 @@ public class BinaryTree<E extends Comparable<E>> {
     }
 
     private TreeNode<E> findRightMostNode(TreeNode<E> root) {
-        Queue<TreeNode<E>> queue = new Queue<TreeNode<E>>(this.getCapacity());
+        Queue<TreeNode<E>> queue = new Queue<>(this.getCapacity());
         queue.enqueue(root);
 
         TreeNode<E> dequeued = null;
@@ -118,8 +115,8 @@ public class BinaryTree<E extends Comparable<E>> {
     }
 
     public void printLevelTraversal() {
-        Queue<TreeNode<E>> queue = new Queue<TreeNode<E>>(this.capacity);
-        String treeAsLevelString = "";
+        Queue<TreeNode<E>> queue = new Queue<>(this.capacity);
+        StringBuilder treeAsLevelString = new StringBuilder();
 
         if (root != null) {
             queue.enqueue(root);
@@ -127,7 +124,7 @@ public class BinaryTree<E extends Comparable<E>> {
             while (!queue.isEmpty()) {
                 TreeNode<E> curNode = queue.dequeue();
                 if (curNode != null) {
-                    treeAsLevelString += curNode.data + ", ";
+                    treeAsLevelString.append(curNode.data).append(", ");
                 }
 
                 if (curNode.left != null)
@@ -136,7 +133,7 @@ public class BinaryTree<E extends Comparable<E>> {
                     queue.enqueue(curNode.right);
             }
 
-            treeAsLevelString += "\n";
+            treeAsLevelString.append("\n");
             System.out.println(treeAsLevelString);
         }
     }
@@ -148,10 +145,8 @@ public class BinaryTree<E extends Comparable<E>> {
 
         TreeNode<E> left = invertTree(root.left);
         TreeNode<E> right = invertTree(root.right);
-
         root.left = right;
         root.right = left;
-
         return root;
     }
 

@@ -93,7 +93,7 @@ public class GraphicsController {
         maxHeapBtn.autosize();
         maxHeapBtn.setOnAction(e -> {
             clearScreen();
-            tree = new TreeViewer<Integer>("Max Heap (Integers)", DataStructureManager.minHeap.convertToTree(), this, true, false);
+            tree = new TreeViewer<Integer>("Max Heap (Integers)", DataStructureManager.maxHeap.convertToTree(), this, true, false);
             tree.displayTree();
         });
 

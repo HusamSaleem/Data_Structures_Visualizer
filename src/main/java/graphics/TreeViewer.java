@@ -154,10 +154,10 @@ public class TreeViewer<E extends Comparable<E>> {
                     this.tree.clear();
 
                     if (this.isMinHeap) {
-                        DataStructureManager.minHeap.insert((Integer) Integer.valueOf(insertElementField.getText()));
+                        DataStructureManager.minHeap.insert(Integer.valueOf(insertElementField.getText()));
                         this.tree = (BinaryTree<E>) DataStructureManager.minHeap.convertToTree();
                     } else {
-                        DataStructureManager.maxHeap.insert((Integer) Integer.valueOf(insertElementField.getText()));
+                        DataStructureManager.maxHeap.insert(Integer.valueOf(insertElementField.getText()));
                         this.tree = (BinaryTree<E>) DataStructureManager.maxHeap.convertToTree();
                     }
                 } else {
