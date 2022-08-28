@@ -1,7 +1,6 @@
 package dataStructures;
 
-import Nodes.ListNode;
-import dataStructuresInterfaces.LinkedList;
+import node.ListNode;
 
 /**
  * @Author: Husam Saleem

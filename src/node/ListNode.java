@@ -1,4 +1,4 @@
-package Nodes;
+package node;
 
 public class ListNode<E> {
     public E data;

@@ -1,14 +1,13 @@
 package graphics;
 
-import Nodes.ListNode;
-import dataStructuresInterfaces.LinkedList;
-import driver.Main;
+import dataStructures.LinkedList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import node.ListNode;
 
 /**
  * Linked List viewer to display a linked list structure whether its doubly or singly and the GUI options as well.
@@ -39,21 +38,21 @@ public class LinkedListViewer<E> {
     public <E> void drawLinkedList(ListNode<E> head, double x, double y, double hgap, int index) {
         if (head != null) {
             if (this.name.equals("Doubly Linked List (Integers)")) {
-                graphicsController.drawArrow(Main.gc, x, y + hgap / 8, x + hgap, y + hgap / 8);
-                graphicsController.drawArrow(Main.gc, x + hgap, y + hgap / 3, x + 35, y + hgap / 3);
+                graphicsController.drawArrow(Graphics.gc, x, y + hgap / 8, x + hgap, y + hgap / 8);
+                graphicsController.drawArrow(Graphics.gc, x + hgap, y + hgap / 3, x + 35, y + hgap / 3);
             } else {
-                graphicsController.drawArrow(Main.gc, x, y + hgap / 4, x + hgap, y + hgap / 4);
+                graphicsController.drawArrow(Graphics.gc, x, y + hgap / 4, x + hgap, y + hgap / 4);
             }
 
-            Main.gc.drawImage(graphicsController.createRectangleNumber(head.data), x, y);
-            Main.gc.fillText(index + "", x, y - 10);
+            Graphics.gc.drawImage(graphicsController.createRectangleNumber(head.data), x, y);
+            Graphics.gc.fillText(index + "", x, y - 10);
             drawLinkedList(head.next, x + hgap, y, hgap, index + 1);
         }
     }
 
     public <E> void drawLinkedList() {
         graphicsController.clearCanvas();
-        drawLinkedList(list.getHead(), 0, Main.CANVAS_HEIGHT / 2, HOR_GAP, 0);
+        drawLinkedList(list.getHead(), 0, Graphics.CANVAS_HEIGHT / 2, HOR_GAP, 0);
     }
 
     /**
@@ -96,7 +95,7 @@ public class LinkedListViewer<E> {
         pane.setCenter(pane1);
         pane.setBottom(pane2);
 
-        Main.rootLayout.setTop(pane);
+        Graphics.rootLayout.setTop(pane);
     }
 
     private HBox setUpInsertionOptions() {

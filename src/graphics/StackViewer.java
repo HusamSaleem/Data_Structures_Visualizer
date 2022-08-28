@@ -1,13 +1,14 @@
 package graphics;
 
 import dataStructures.Stack;
-import driver.Main;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+
+import static graphics.Graphics.CANVAS_HEIGHT;
 
 /**
  * Displays a Stack structure and the GUI options as well
@@ -33,7 +34,7 @@ public class StackViewer<E> {
 
     private void drawStack() {
         graphicsController.clearCanvas();
-        drawStack(new Stack<E>(stack), 0, Main.CANVAS_HEIGHT / 2, HOR_GAP);
+        drawStack(new Stack<E>(stack), 0, CANVAS_HEIGHT / 2, HOR_GAP);
     }
 
     private void drawStack(Stack<E> copy, int x, int y, int hgap) {
@@ -41,8 +42,8 @@ public class StackViewer<E> {
 
         while (!copy.isEmpty()) {
             E poppedData = copy.pop();
-            Main.gc.drawImage(graphicsController.createRectangleNumber(poppedData), x, y);
-            Main.gc.fillText(index + "", x, y - 10);
+            Graphics.gc.drawImage(graphicsController.createRectangleNumber(poppedData), x, y);
+            Graphics.gc.fillText(index + "", x, y - 10);
 
             x += hgap;
             index++;
@@ -83,7 +84,7 @@ public class StackViewer<E> {
         pane.setCenter(pane1);
         pane.setBottom(pane2);
 
-        Main.rootLayout.setTop(pane);
+        Graphics.rootLayout.setTop(pane);
     }
 
     private HBox setUpInsertionOptions() {

@@ -1,16 +1,16 @@
 package graphics;
 
-import Nodes.TreeNode;
 import dataStructures.AVLTree;
 import dataStructures.BinarySearchTree;
 import dataStructures.BinaryTree;
-import driver.Main;
+import dataStructures.DataStructureManager;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import node.TreeNode;
 
 /**
  * Displays a Tree structure and the GUI options as well
@@ -20,8 +20,8 @@ import javafx.scene.text.Text;
  */
 public class TreeViewer<E extends Comparable<E>> {
     private final int VERT_GAP = 50; // Vertical gap per node
-    BinaryTree<E> tree;
-    GraphicsController graphicsController;
+    private BinaryTree<E> tree;
+    private GraphicsController graphicsController;
     private String name;
     private boolean isHeap;
     private boolean isMinHeap;
@@ -62,7 +62,7 @@ public class TreeViewer<E extends Comparable<E>> {
 
     private void drawTree() {
         graphicsController.clearCanvas();
-        drawTree(tree.getRoot(), Main.CANVAS_WIDTH / 2, 50, Main.CANVAS_WIDTH / 4);
+        drawTree(tree.getRoot(), Graphics.CANVAS_WIDTH / 2, 50, Graphics.CANVAS_WIDTH / 4);
     }
 
     /**
@@ -71,14 +71,14 @@ public class TreeViewer<E extends Comparable<E>> {
     private <E> void drawTree(TreeNode<E> root, double x, double y, double hGap) {
         if (root != null) {
             if (root.left != null) {
-                Main.gc.strokeLine(x - hGap, y + VERT_GAP, x, y); // Draw line to left node
+                Graphics.gc.strokeLine(x - hGap, y + VERT_GAP, x, y); // Draw line to left node
             }
             if (root.right != null) {
-                Main.gc.strokeLine(x + hGap, y + VERT_GAP, x, y); // Draw line to right node
+                Graphics.gc.strokeLine(x + hGap, y + VERT_GAP, x, y); // Draw line to right node
             }
 
             drawTree(root.left, x - hGap, y + VERT_GAP, hGap / 2);
-            Main.gc.drawImage(graphicsController.createCircledNumber((Integer) root.data), x - 15, y - 12); // The -15, and -12 are just offsets for the circles to align with the lines
+            Graphics.gc.drawImage(graphicsController.createCircledNumber((Integer) root.data), x - 15, y - 12); // The -15, and -12 are just offsets for the circles to align with the lines
             drawTree(root.right, x + hGap, y + VERT_GAP, hGap / 2);
         }
     }
@@ -100,9 +100,9 @@ public class TreeViewer<E extends Comparable<E>> {
         clear.setOnAction(e -> {
             if (this.isHeap)
                 if (this.isMinHeap)
-                    Main.minHeap.clear();
+                    DataStructureManager.minHeap.clear();
                 else
-                    Main.maxHeap.clear();
+                    DataStructureManager.maxHeap.clear();
             tree.clear();
             drawTree();
         });
@@ -129,7 +129,7 @@ public class TreeViewer<E extends Comparable<E>> {
         pane.setCenter(pane1);
         pane.setBottom(pane2);
 
-        Main.rootLayout.setTop(pane);
+        Graphics.rootLayout.setTop(pane);
     }
 
     private HBox setUpInsertionOptions() {
@@ -154,11 +154,11 @@ public class TreeViewer<E extends Comparable<E>> {
                     this.tree.clear();
 
                     if (this.isMinHeap) {
-                        Main.minHeap.insert((Integer) Integer.valueOf(insertElementField.getText()));
-                        this.tree = (BinaryTree<E>) Main.minHeap.convertToTree();
+                        DataStructureManager.minHeap.insert((Integer) Integer.valueOf(insertElementField.getText()));
+                        this.tree = (BinaryTree<E>) DataStructureManager.minHeap.convertToTree();
                     } else {
-                        Main.maxHeap.insert((Integer) Integer.valueOf(insertElementField.getText()));
-                        this.tree = (BinaryTree<E>) Main.maxHeap.convertToTree();
+                        DataStructureManager.maxHeap.insert((Integer) Integer.valueOf(insertElementField.getText()));
+                        this.tree = (BinaryTree<E>) DataStructureManager.maxHeap.convertToTree();
                     }
                 } else {
                     this.tree.insert((E) Integer.valueOf(insertElementField.getText()));
@@ -197,11 +197,11 @@ public class TreeViewer<E extends Comparable<E>> {
                     this.tree.clear();
 
                     if (this.isMinHeap) {
-                        Main.minHeap.extractNum();
-                        this.tree = (BinaryTree<E>) Main.minHeap.convertToTree();
+                        DataStructureManager.minHeap.extractNum();
+                        this.tree = (BinaryTree<E>) DataStructureManager.minHeap.convertToTree();
                     } else {
-                        Main.maxHeap.extractNum();
-                        this.tree = (BinaryTree<E>) Main.maxHeap.convertToTree();
+                        DataStructureManager.maxHeap.extractNum();
+                        this.tree = (BinaryTree<E>) DataStructureManager.maxHeap.convertToTree();
                     }
                 } else {
                     this.tree.delete((E) Integer.valueOf(deleteElementField.getText()));

@@ -1,14 +1,11 @@
-package abstractClasses;
-
-import dataStructures.BinaryTree;
-import dataStructuresInterfaces.HeapInterface;
+package dataStructures;
 
 /**
  * The Heap super class
  *
  * @Author: Husam Saleem
  */
-public abstract class Heap<E extends Comparable<E>> implements HeapInterface<E> {
+public abstract class Heap<E extends Comparable<E>> {
     protected E[] heapArr;
     protected int size, capacity;
 
@@ -32,22 +29,18 @@ public abstract class Heap<E extends Comparable<E>> implements HeapInterface<E> 
         heapArr[index2] = tempData;
     }
 
-    @Override
     public final E peek() {
         return heapArr[0];
     }
 
-    @Override
     public final int getSize() {
         return this.size;
     }
 
-    @Override
     public final int getCapacity() {
         return this.capacity;
     }
 
-    @Override
     public final boolean isEmpty() {
         return this.size == 0;
     }
@@ -93,22 +86,18 @@ public abstract class Heap<E extends Comparable<E>> implements HeapInterface<E> 
         return (2 * index) + 1;
     }
 
-    @Override
     public final E getParent(int index) {
         return this.heapArr[(index - 1) / 2];
     }
 
-    @Override
     public final E getRightChild(int index) {
         return this.heapArr[2 * index + 2];
     }
 
-    @Override
     public final E getLeftChild(int index) {
         return this.heapArr[2 * index + 1];
     }
 
-    @Override
     public final boolean isRightNull(int index) {
         try {
             if (this.getRightChild(index) != null)
@@ -120,7 +109,6 @@ public abstract class Heap<E extends Comparable<E>> implements HeapInterface<E> 
         }
     }
 
-    @Override
     public final boolean isLeftNull(int index) {
         try {
             if (this.getLeftChild(index) != null)

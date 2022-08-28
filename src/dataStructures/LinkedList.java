@@ -1,6 +1,6 @@
-package dataStructuresInterfaces;
+package dataStructures;
 
-import Nodes.ListNode;
+import node.ListNode;
 
 public interface LinkedList<E> {
     public void insert(E val); // At end of the list

@@ -1,6 +1,6 @@
 package graphics;
 
-import driver.Main;
+import dataStructures.DataStructureManager;
 import javafx.geometry.Pos;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
@@ -16,6 +16,9 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Transform;
+
+import static graphics.Graphics.CANVAS_HEIGHT;
+import static graphics.Graphics.CANVAS_WIDTH;
 
 /**
  * This controls the GUI
@@ -42,7 +45,7 @@ public class GraphicsController {
         singlyLinkedListBtn.autosize();
         singlyLinkedListBtn.setOnAction(e -> {
             clearScreen();
-            linkedListViewer = new LinkedListViewer<Integer>("Singly Linked List (Integers)", Main.singlyLinkedList, this);
+            linkedListViewer = new LinkedListViewer<Integer>("Singly Linked List (Integers)", DataStructureManager.singlyLinkedList, this);
             linkedListViewer.displayLinkedlist();
         });
 
@@ -50,7 +53,7 @@ public class GraphicsController {
         doublyLinkedListButton.autosize();
         doublyLinkedListButton.setOnAction(e -> {
             clearScreen();
-            linkedListViewer = new LinkedListViewer<Integer>("Doubly Linked List (Integers)", Main.doublyLinkedList, this);
+            linkedListViewer = new LinkedListViewer<Integer>("Doubly Linked List (Integers)", DataStructureManager.doublyLinkedList, this);
             linkedListViewer.displayLinkedlist();
         });
 
@@ -58,7 +61,7 @@ public class GraphicsController {
         binaryTreeBtn.autosize();
         binaryTreeBtn.setOnAction(e -> {
             clearScreen();
-            tree = new TreeViewer<Integer>("Binary Tree (Integers)", Main.binaryTree, this);
+            tree = new TreeViewer<Integer>("Binary Tree (Integers)", DataStructureManager.binaryTree, this);
             tree.displayTree();
         });
 
@@ -66,7 +69,7 @@ public class GraphicsController {
         bstTreeBtn.autosize();
         bstTreeBtn.setOnAction(e -> {
             clearScreen();
-            tree = new TreeViewer<Integer>("Binary Search Tree (Integers)", Main.bstTree, this);
+            tree = new TreeViewer<Integer>("Binary Search Tree (Integers)", DataStructureManager.bstTree, this);
             tree.displayTree();
         });
 
@@ -74,7 +77,7 @@ public class GraphicsController {
         avlTreeBtn.autosize();
         avlTreeBtn.setOnAction(e -> {
             clearScreen();
-            tree = new TreeViewer<Integer>("AVL Tree (Integers)", Main.avlTree, this);
+            tree = new TreeViewer<Integer>("AVL Tree (Integers)", DataStructureManager.avlTree, this);
             tree.displayTree();
         });
 
@@ -82,7 +85,7 @@ public class GraphicsController {
         minHeapBtn.autosize();
         minHeapBtn.setOnAction(e -> {
             clearScreen();
-            tree = new TreeViewer<Integer>("Min Heap (Integers)", Main.minHeap.convertToTree(), this, true, true);
+            tree = new TreeViewer<Integer>("Min Heap (Integers)", DataStructureManager.minHeap.convertToTree(), this, true, true);
             tree.displayTree();
         });
 
@@ -90,7 +93,7 @@ public class GraphicsController {
         maxHeapBtn.autosize();
         maxHeapBtn.setOnAction(e -> {
             clearScreen();
-            tree = new TreeViewer<Integer>("Max Heap (Integers)", Main.minHeap.convertToTree(), this, true, false);
+            tree = new TreeViewer<Integer>("Max Heap (Integers)", DataStructureManager.minHeap.convertToTree(), this, true, false);
             tree.displayTree();
         });
 
@@ -98,7 +101,7 @@ public class GraphicsController {
         stackBtn.autosize();
         stackBtn.setOnAction(e -> {
             clearScreen();
-            stackViewer = new StackViewer<Integer>("Stack (Integers)", Main.stack, this);
+            stackViewer = new StackViewer<Integer>("Stack (Integers)", DataStructureManager.stack, this);
             stackViewer.displayStack();
         });
 
@@ -106,40 +109,40 @@ public class GraphicsController {
         queueBtn.autosize();
         queueBtn.setOnAction(e -> {
             clearScreen();
-            queueViewer = new QueueViewer<Integer>("Queue (Integers)", Main.queue, this);
+            queueViewer = new QueueViewer<Integer>("Queue (Integers)", DataStructureManager.queue, this);
             queueViewer.displayQueue();
         });
 
         hBox.setAlignment(Pos.CENTER);
         hBox.getChildren().addAll(singlyLinkedListBtn, doublyLinkedListButton, binaryTreeBtn, bstTreeBtn, avlTreeBtn, minHeapBtn, maxHeapBtn, stackBtn, queueBtn);
         hBox.setSpacing(15);
-        Main.rootLayout.setTop(hBox);
+        Graphics.rootLayout.setTop(hBox);
     }
 
     public void fullClearCanvas() {
-        Main.gc.clearRect(0, 0, Main.CANVAS_WIDTH, Main.CANVAS_HEIGHT);
+        Graphics.gc.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     }
 
     /**
      * Places text on canvas
      */
     public void log(String txt) {
-        Main.gc.setFill(Color.RED);
-        Main.gc.setFont(new Font("Arial Black", 18));
-        Main.gc.fillText(txt, Main.CANVAS_WIDTH / 3, Main.CANVAS_HEIGHT - 25);
-        Main.gc.setFont(new Font("Arial Black", 12));
-        Main.gc.setFill(Color.BLACK);
+        Graphics.gc.setFill(Color.RED);
+        Graphics.gc.setFont(new Font("Arial Black", 18));
+        Graphics.gc.fillText(txt, CANVAS_WIDTH / 3, CANVAS_HEIGHT - 25);
+        Graphics.gc.setFont(new Font("Arial Black", 12));
+        Graphics.gc.setFill(Color.BLACK);
     }
 
     public void clearCanvas() {
-        Main.gc.clearRect(0, 0, Main.CANVAS_WIDTH, Main.CANVAS_HEIGHT - 50);
-        Main.gc.setFont(new Font("Arial Black", 12));
+        Graphics.gc.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT - 50);
+        Graphics.gc.setFont(new Font("Arial Black", 12));
     }
 
     public void clearScreen() {
         clearCanvas();
-        Main.rootLayout.getChildren().clear();
-        Main.rootLayout.setCenter(Main.canvas);
+        Graphics.rootLayout.getChildren().clear();
+        Graphics.rootLayout.setCenter(Graphics.canvas);
     }
 
     public <E> WritableImage createCircledNumber(E data) {

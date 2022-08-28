@@ -1,4 +1,4 @@
-package Nodes;
+package node;
 
 /**
  * Used for AVL and BST

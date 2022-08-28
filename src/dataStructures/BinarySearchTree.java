@@ -1,12 +1,11 @@
 package dataStructures;
 
-import Nodes.TreeNode;
-import dataStructuresInterfaces.BSTInterface;
+import node.TreeNode;
 
 /**
  * @Author: Husam Saleem
  */
-public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> implements BSTInterface<E> {
+public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
     public BinarySearchTree(int capacity) {
         super(capacity);
     }
@@ -146,7 +145,7 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> imp
      * O(logn) run-time
      * Recursively traverses through the tree
      */
-    @Override
+
     public final boolean search(E data) {
         return searchHelper(this.root, data);
     }
