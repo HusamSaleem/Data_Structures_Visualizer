@@ -3,6 +3,7 @@
 # Description
 - A data structure visualizer for several data structures implemented to help new beginners that learn better with visuals.
 - Be able to reverse linked lists :D
+- Also be able to invert a binary tree !!!
 
 Currently Supported Data Structures: 
 - Linked Lists (Singly & Doubly)
